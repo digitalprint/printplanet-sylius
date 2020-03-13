@@ -1,0 +1,30 @@
+{
+  "name": "printplanet/sylius-product-service-provider",
+  "description": "Makes Sylius Products available in Printplanet application",
+  "keywords": ["shop", "sylius", "products", "product"],
+  "homepage": "https://www.printplanet.de",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "PrintPlanet",
+      "homepage": "https://www.printplanet.de"
+    }
+  ],
+  "require": {
+    "php": "~7.1",
+
+    "silex/silex": "~1.2",
+    "doctrine/orm": "^2.5",
+    "printplanet/sylius-core": "@dev",
+    "printplanet/sylius-resource-service-provider": "@dev"
+  },
+  "require-dev": {
+    "doctrine/orm": "^2.5",
+    "phpunit/phpunit": "^7.0"
+  },
+  "autoload": {
+    "psr-4": { "PrintPlanet\\Sylius\\ServiceProvider\\ProductServiceProvider\\": "" }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ This file is part of the PrintPlanet/Sylius package.
+
+ (c) Nikos Papagiannopoulos
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+
+ This file incorporates work covered by the following copyright and  
+ permission notice:
+
+   This file is part of the Sylius package.
+
+   (c) Paweł Jędrzejewski
+
+   For the full copyright and license information, please view the LICENSE
+   file that was distributed with this source code.
+
+-->
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="PrintPlanet\Sylius\Component\Core\Model\Taxon" table="sylius_taxon" repository-class="PrintPlanet\Sylius\ServiceProvider\CoreServiceProvider\Doctrine\ORM\TaxonRepository">
+
+        <options>
+            <option name="charset">utf8</option>
+            <option name="collate">utf8_unicode_ci</option>
+        </options>
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <many-to-one field="root" target-entity="PrintPlanet\Sylius\Component\Core\Model\Taxon">
+            <join-column name="tree_root" referenced-column-name="id" nullable="true" on-delete="CASCADE" />
+            <gedmo:tree-root />
+        </many-to-one>
+        <many-to-one field="parent" target-entity="PrintPlanet\Sylius\Component\Core\Model\Taxon" inversed-by="children">
+            <join-column name="parent_id" referenced-column-name="id" nullable="true" on-delete="CASCADE" />
+            <gedmo:tree-parent />
+            <gedmo:sortable-group />
+        </many-to-one>
+
+        <one-to-many field="children" target-entity="PrintPlanet\Sylius\Component\Core\Model\Taxon" mapped-by="parent">
+            <cascade>
+                <cascade-persist />
+            </cascade>
+            <order-by>
+                <order-by-field name="position" direction="ASC" />
+            </order-by>
+        </one-to-many>
+
+        <field name="code" column="code" type="string" unique="true" />
+        <field name="left" column="tree_left" type="integer">
+            <gedmo:tree-left />
+        </field>
+        <field name="right" column="tree_right" type="integer">
+            <gedmo:tree-right />
+        </field>
+        <field name="level" column="tree_level" type="integer">
+            <gedmo:tree-level />
+        </field>
+        <field name="position" type="integer">
+            <gedmo:sortable-position />
+        </field>
+
+        <gedmo:tree type="nested" />
+
+        <field name="createdAt" column="created_at" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
+            <gedmo:timestampable on="update"/>
+        </field>
+
+        <one-to-many field="images" target-entity="PrintPlanet\Sylius\Component\Core\Model\TaxonImage" mapped-by="owner" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+
+        <one-to-many field="translations" target-entity="PrintPlanet\Sylius\Component\Taxonomy\Model\TaxonTranslation" mapped-by="taxon" orphan-removal="true" index-by="locale">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+
+    </mapped-superclass>
+
+</doctrine-mapping>

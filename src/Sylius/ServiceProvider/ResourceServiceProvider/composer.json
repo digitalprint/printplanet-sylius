@@ -1,0 +1,32 @@
+{
+  "name": "printplanet/sylius-resource-service-provider",
+  "description": "Resource component for Sylius.",
+  "keywords": ["resource", "storage", "persistence", "sylius"],
+  "homepage": "https://www.printplanet.de",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "PrintPlanet",
+      "homepage": "https://www.printplanet.de"
+    }
+  ],
+  "require": {
+    "php": "~7.1",
+
+    "silex/silex": "~1.2",
+    "doctrine/common": "^2.6",
+    "doctrine/orm": "^2.5",
+    "pagerfanta/pagerfanta": "~1.0",
+    "printplanet/sylius-resource": "@dev",
+    "printplanet/sylius-resource-service-provider": "@dev"
+  },
+  "require-dev": {
+    "doctrine/orm": "^2.5",
+    "phpunit/phpunit": "^7.0"
+  },
+  "autoload": {
+    "psr-4": { "PrintPlanet\\Sylius\\ServiceProvider\\ResourceServiceProvider\\": "" }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

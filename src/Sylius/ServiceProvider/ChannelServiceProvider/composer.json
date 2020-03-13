@@ -1,0 +1,29 @@
+{
+    "name": "printplanet/sylius-channel-service-provider",
+    "description": "Currencies and channel formatting engine bundle for Symfony.",
+    "keywords": ["cash", "currency", "channel", "currencies"],
+    "homepage": "https://www.printplanet.de",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PrintPlanet",
+            "homepage": "https://www.printplanet.de"
+        }
+    ],
+    "require": {
+        "php": "~7.1",
+
+        "silex/silex": "~1.2",
+        "printplanet/sylius-channel": "@dev",
+        "printplanet/sylius-resource-service-provider": "@dev"
+    },
+    "require-dev": {
+        "doctrine/orm": "^2.5",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": { "PrintPlanet\\Sylius\\ServiceProvider\\ChannelServiceProvider\\": "" }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

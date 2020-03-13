@@ -1,0 +1,44 @@
+{
+  "name": "printplanet/sylius-core-service-provider",
+  "description": "Sylius core bundle. It integrates all other bundles into full stack Symfony ecommerce solution.",
+  "keywords": ["shop", "ecommerce", "store", "webshop", "sylius"],
+  "homepage": "https://www.printplanet.de",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "PrintPlanet",
+      "homepage": "https://www.printplanet.de"
+    }
+  ],
+  "require": {
+    "php": "~7.1",
+
+    "silex/silex": "~1.2",
+    "doctrine/orm": "^2.5",
+    "printplanet/sylius-addressing": "@dev",
+    "printplanet/sylius-core": "@dev",
+    "printplanet/sylius-currency": "@dev",
+    "printplanet/sylius-locale": "@dev",
+    "printplanet/sylius-product": "@dev",
+    "printplanet/sylius-repository": "@dev",
+    "printplanet/sylius-taxonomy": "@dev",
+    "printplanet/sylius-addressing-service-provider": "@dev",
+    "printplanet/sylius-attribute-service-provider": "@dev",
+    "printplanet/sylius-channel-service-provider": "@dev",
+    "printplanet/sylius-core-service-provider": "@dev",
+    "printplanet/sylius-currency-service-provider": "@dev",
+    "printplanet/sylius-locale-service-provider": "@dev",
+    "printplanet/sylius-product-service-provider": "@dev",
+    "printplanet/sylius-resource-service-provider": "@dev",
+    "printplanet/sylius-taxonomy-service-provider": "@dev"
+  },
+  "require-dev": {
+    "doctrine/orm": "^2.5",
+    "phpunit/phpunit": "^7.0"
+  },
+  "autoload": {
+    "psr-4": { "PrintPlanet\\Sylius\\ServiceProvider\\CoreServiceProvider\\": "" }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

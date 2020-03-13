@@ -1,0 +1,29 @@
+{
+    "name": "printplanet/sylius-attribute-service-provider",
+    "type": "symfony-bundle",
+    "description": "Managing object attributes for Symfony applications.",
+    "keywords": ["shop", "ecommerce", "products", "product", "assortment"],
+    "homepage": "https://www.printplanet.de",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PrintPlanet",
+            "homepage": "https://www.printplanet.de"
+        }
+    ],
+    "require": {
+        "php": "~7.1",
+
+        "silex/silex": "~1.2",
+        "printplanet/sylius-attribute": "@dev"
+    },
+    "require-dev": {
+        "doctrine/orm": "^2.5",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": { "PrintPlanet\\Sylius\\ServiceProvider\\AttributeServiceProvider\\": "" }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

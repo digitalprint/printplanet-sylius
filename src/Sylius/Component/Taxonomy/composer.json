@@ -1,0 +1,35 @@
+{
+    "name": "printplanet/sylius-taxonomy",
+    "type": "library",
+    "description": "Taxonomies - categorization of domain models in PHP projects.",
+    "keywords": ["taxonomy", "ecommerce", "categorization", "taxon", "classification"],
+    "homepage": "https://www.printplanet.de",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PrintPlanet",
+            "homepage": "https://www.printplanet.de"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+
+        "doctrine/collections": "^1.3",
+        "doctrine/orm": "^2.5",
+        "printplanet/sylius-core": "@dev",
+        "printplanet/sylius-resource": "@dev",
+        "printplanet/sylius-taxonomy": "@dev",
+        "webmozart/assert": "^1.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^5.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": { "PrintPlanet\\Sylius\\Component\\Taxonomy\\": "" }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

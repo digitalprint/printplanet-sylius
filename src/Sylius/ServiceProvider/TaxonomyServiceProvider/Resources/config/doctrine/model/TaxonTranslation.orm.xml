@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ This file is part of the PrintPlanet/Sylius package.
+
+ (c) Nikos Papagiannopoulos
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+
+ This file incorporates work covered by the following copyright and  
+ permission notice:
+
+   This file is part of the Sylius package.
+
+   (c) Paweł Jędrzejewski
+
+   For the full copyright and license information, please view the LICENSE
+   file that was distributed with this source code.
+
+-->
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="PrintPlanet\Sylius\Component\Taxonomy\Model\TaxonTranslation" table="sylius_taxon_translation">
+
+        <options>
+            <option name="charset">utf8</option>
+            <option name="collate">utf8_unicode_ci</option>
+        </options>
+
+        <unique-constraints>
+            <unique-constraint columns="locale,slug" name="slug_uidx" />
+        </unique-constraints>
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="name" column="name" type="string" />
+        <field name="slug" column="slug" type="string" unique="false" />
+        <field name="description" column="description" type="text" nullable="true" />
+        <field name="locale" column="locale" type="string" />
+        <field name="layout" column="layout" type="text" nullable="true" />
+        <field name="url" column="url" type="text" nullable="true" />
+        <field name="visibleInSiteMap" column="visible_in_site_map" type="boolean">
+            <options>
+                <option name="default">1</option>
+            </options>
+        </field>
+        <field name="visibleInMenu" column="visible_in_menu" type="boolean">
+            <options>
+                <option name="default">1</option>
+            </options>
+        </field>
+
+        <many-to-one field="taxon" target-entity="PrintPlanet\Sylius\Component\Core\Model\Taxon">
+            <join-column name="translatable_id" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+    </mapped-superclass>
+
+</doctrine-mapping>

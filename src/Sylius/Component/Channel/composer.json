@@ -1,0 +1,25 @@
+{
+  "name": "printplanet/sylius-channel",
+  "type": "library",
+  "description": "Component for handling channels in PHP projects.",
+  "keywords": ["shop", "ecommerce", "channel", "feature"],
+  "homepage": "https://www.printplanet.de",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "PrintPlanet",
+      "homepage": "https://www.printplanet.de"
+    }
+  ],
+  "require": {
+    "php": "~7.1",
+
+    "doctrine/collections": "^1.3",
+    "printplanet/sylius-resource": "@dev"
+  },
+  "autoload": {
+    "psr-4": { "PrintPlanet\\Sylius\\Component\\Channel\\": "" }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
