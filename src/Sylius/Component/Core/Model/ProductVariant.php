@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -25,16 +25,15 @@ namespace PrintPlanet\Sylius\Component\Core\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use PrintPlanet\Sylius\Component\Attribute\Model\AttributeSubjectInterface;
 use PrintPlanet\Sylius\Component\Attribute\Model\AttributeValueInterface;
 use PrintPlanet\Sylius\Component\Product\Model\ProductAttributeInterface;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariant as BaseVariant;
-use PrintPlanet\Sylius\Component\Product\Model\ProductAttributeValueInterface;
-use PrintPlanet\Sylius\Component\Product\Model\ProductVariantTranslationInterface;
-use PrintPlanet\Sylius\Component\Product\Model\ProductVariantTranslation;
+use PrintPlanet\Sylius\Component\Product\Model\ProductVariantAttributeValueInterface;
 use Webmozart\Assert\Assert;
 
 
-class ProductVariant extends BaseVariant implements ProductVariantInterface
+class ProductVariant extends BaseVariant implements ProductVariantInterface, AttributeSubjectInterface
 {
     /** @var int */
     protected $version = 1;
@@ -443,6 +442,42 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
     /**
      * {@inheritdoc}
      */
+    public function addAttribute(?AttributeValueInterface $attribute): void
+    {
+        /** @var ProductVariantAttributeValueInterface $attribute */
+        Assert::isInstanceOf(
+            $attribute,
+            ProductVariantAttributeValueInterface::class,
+            'Attribute objects added to a Product Variant object have to implement ProductVariantAttributeValueInterface'
+        );
+
+        if (!$this->hasAttribute($attribute)) {
+            $attribute->setProductVariant($this);
+            $this->attributes->add($attribute);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeAttribute(?AttributeValueInterface $attribute): void
+    {
+        /** @var ProductVariantAttributeValueInterface $attribute */
+        Assert::isInstanceOf(
+            $attribute,
+            ProductVariantAttributeValueInterface::class,
+            'Attribute objects removed from a Product Variant object have to implement ProductVariantAttributeValueInterface'
+        );
+
+        if ($this->hasAttribute($attribute)) {
+            $this->attributes->removeElement($attribute);
+            $attribute->setProduct(null);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getAttributesByLocale(
         string $localeCode,
         ?string $fallbackLocaleCode,
@@ -454,7 +489,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
         }
 
         $attributes = $this->attributes->filter(
-            static function (ProductAttributeValueInterface $attribute) use ($baseLocaleCode) {
+            static function (ProductVariantAttributeValueInterface $attribute) use ($baseLocaleCode) {
                 return $attribute->getLocaleCode() === $baseLocaleCode;
             }
         );
@@ -518,7 +553,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
     }
 
     private function getAttributeInDifferentLocale(
-        ProductAttributeValueInterface $attributeValue,
+        ProductVariantAttributeValueInterface $attributeValue,
         string $localeCode,
         ?string $fallbackLocaleCode = null
     ): AttributeValueInterface {
