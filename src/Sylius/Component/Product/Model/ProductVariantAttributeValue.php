@@ -33,7 +33,7 @@ class ProductVariantAttributeValue extends BaseAttributeValue implements Product
      */
     public function getProductVariant(): ?ProductVariantInterface
     {
-        $subject = $this->getSubject();
+        $subject = parent::getSubject();
 
         /* @var ProductVariantInterface|null $subject */
         Assert::nullOrIsInstanceOf($subject, ProductVariantInterface::class);
@@ -46,6 +46,6 @@ class ProductVariantAttributeValue extends BaseAttributeValue implements Product
      */
     public function setProductVariant(?ProductVariantInterface $productVariant): void
     {
-        $this->setSubject($productVariant);
+        parent::setSubject($productVariant);
     }
 }
