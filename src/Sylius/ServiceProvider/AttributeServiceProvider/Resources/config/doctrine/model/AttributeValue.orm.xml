@@ -9,7 +9,7 @@
  For the full copyright and license information, please view the LICENSE
  file that was distributed with this source code.
 
- This file incorporates work covered by the following copyright and  
+ This file incorporates work covered by the following copyright and
  permission notice:
 
    This file is part of the Sylius package.
@@ -26,7 +26,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="PrintPlanet\Sylius\Component\Attribute\Model\AttributeValue" table="sylius_attribute_value">
+    <mapped-superclass name="PrintPlanet\Sylius\Component\Attribute\Model\AttributeValue">
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
