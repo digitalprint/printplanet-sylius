@@ -27,6 +27,9 @@ use PrintPlanet\Sylius\ServiceProvider\CoreServiceProvider\Doctrine\ORM\ProductR
 use PrintPlanet\Sylius\ServiceProvider\CoreServiceProvider\Doctrine\RepositoryFactory;
 use PrintPlanet\Sylius\ServiceProvider\TaxonomyServiceProvider\Doctrine\ORM\TaxonRepository;
 
+/**
+ * @deprecated Will be removed in v1.0.0
+ */
 final class ProductRepositoryTest extends \PHPUnit_Framework_TestCase
 {
     use RepositoryTestTrait;

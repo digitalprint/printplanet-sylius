@@ -24,6 +24,9 @@ use PrintPlanet\Sylius\ServiceProvider\ResourceServiceProvider\SyliusResourceSer
 use PrintPlanet\Sylius\ServiceProvider\TaxonomyServiceProvider\SyliusTaxonomyServiceProvider;
 use PrintPlanet\Sylius\ServiceProvider\LocaleServiceProvider\SyliusLocaleServiceProvider;
 
+/**
+ * @deprecated Will be removed in v1.0.0
+ */
 trait RepositoryTestTrait
 {
     /**
