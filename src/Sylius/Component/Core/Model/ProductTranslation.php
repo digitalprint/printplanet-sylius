@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -33,6 +33,9 @@ class ProductTranslation extends BaseProductTranslation implements ProductTransl
     /** @var string */
     protected $shortDescription;
 
+    /** @var string */
+    protected $metaDescriptionText;
+
     /**
      * {@inheritdoc}
      */
@@ -47,5 +50,21 @@ class ProductTranslation extends BaseProductTranslation implements ProductTransl
     public function setShortDescription(?string $shortDescription): void
     {
         $this->shortDescription = $shortDescription;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMetaDescriptionText(): ?string
+    {
+        return $this->metaDescriptionText;
+    }
+
+    /**
+     * @param string|null $metaDescriptionText
+     */
+    public function setMetaDescriptionText(?string $metaDescriptionText): void
+    {
+        $this->metaDescriptionText = $metaDescriptionText;
     }
 }

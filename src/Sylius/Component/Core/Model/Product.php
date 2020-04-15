@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -29,7 +29,6 @@ use PrintPlanet\Sylius\Component\Channel\Model\ChannelInterface as BaseChannelIn
 use PrintPlanet\Sylius\Component\Core\Provider\TaxonLayoutProvider;
 use PrintPlanet\Sylius\Component\Product\Model\Product as BaseProduct;
 use PrintPlanet\Sylius\Component\Product\Model\ProductTranslationInterface as BaseProductTranslationInterface;
-use PrintPlanet\Sylius\Component\Resource\Model\TranslationInterface;
 use PrintPlanet\Sylius\Component\Taxonomy\Model\TaxonViewLayout;
 use Webmozart\Assert\Assert;
 
@@ -317,5 +316,15 @@ class Product extends BaseProduct implements ProductInterface
     public function getViewLayout(): ?TaxonViewLayout
     {
         return TaxonLayoutProvider::getViewLayout($this->getMainTaxon());
+    }
+
+    public function getMetaDescriptionText(): ?string
+    {
+        return $this->getTranslation()->getMetaDescriptionText();
+    }
+
+    public function setMetaDescriptionText(?string $metaDescription): void
+    {
+        $this->getTranslation()->setMetaDescriptionText($metaDescription);
     }
 }
