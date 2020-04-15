@@ -71,7 +71,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
     /** @var Collection|AttributeValueInterface[] */
     protected $attributes;
 
-    /** @var Collection|ProductAttributeInterface[] */
+    /** @var Collection|ProductVariantAttributeAxisInterface[] */
     protected $variantAxes;
 
     /** @var bool */
@@ -592,7 +592,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
     }
 
     /**
-     * @return Collection|ProductAttributeInterface[]
+     * @return Collection|ProductVariantAttributeAxisInterface[]
      */
     public function getVariantAxes(): Collection
     {
@@ -600,26 +600,26 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
     }
 
     /**
-     * @param ProductAttributeInterface $productAttribute
+     * @param ProductVariantAttributeAxisInterface $productAttribute
      *
      * @return bool
      */
-    public function hasVariantAxis(ProductAttributeInterface $productAttribute): bool
+    public function hasVariantAxis(ProductVariantAttributeAxisInterface $productAttribute): bool
     {
         return $this->variantAxes->contains($productAttribute);
     }
 
     /**
-     * @param ProductAttributeInterface $productAttribute
+     * @param ProductVariantAttributeAxisInterface $productAttribute
      */
-    public function addVariantAxis(ProductAttributeInterface $productAttribute): void
+    public function addVariantAxis(ProductVariantAttributeAxisInterface $productAttribute): void
     {
         if (! $this->hasVariantAxis($productAttribute)) {
             $this->variantAxes->add($productAttribute);
         }
     }
 
-    public function removeVariantAxis(ProductAttributeInterface $productAttribute): void
+    public function removeVariantAxis(ProductVariantAttributeAxisInterface $productAttribute): void
     {
         if ($this->hasVariantAxis($productAttribute)) {
             $this->variantAxes->removeElement($productAttribute);
@@ -636,7 +636,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
         $attributesByLocale = [];
 
         foreach ($this->variantAxes as $variantAxis) {
-            if (null === $attributeByLocale = $this->getAttributeByCodeAndLocale($variantAxis->getCode(), $localeCode)) {
+            if (null === $attributeByLocale = $this->getAttributeByCodeAndLocale($variantAxis->getAttribute()->getCode(), $localeCode)) {
                 continue;
             }
             $attributesByLocale[] = $attributeByLocale;
