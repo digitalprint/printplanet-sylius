@@ -9,7 +9,7 @@
  For the full copyright and license information, please view the LICENSE
  file that was distributed with this source code.
 
- This file incorporates work covered by the following copyright and  
+ This file incorporates work covered by the following copyright and
  permission notice:
 
    This file is part of the Sylius package.
@@ -46,6 +46,7 @@
         <field name="description" column="description" type="text" nullable="true" />
         <field name="metaKeywords" column="meta_keywords" type="string" nullable="true" />
         <field name="metaDescription" column="meta_description" type="string" nullable="true" />
+        <field name="metaDescriptionText" column="meta_description_text" type="string" nullable="true" />
         <field name="locale" column="locale" type="string"/>
 
         <field name="shortDescription" column="short_description" type="text" nullable="true" />
