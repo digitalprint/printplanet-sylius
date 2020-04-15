@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -36,6 +36,11 @@ class ProductVariantTranslation extends AbstractTranslation implements ProductVa
 
     /** @var ProductVariant */
     protected $productVariant;
+
+    /**
+     * @var string|null $designerUrl
+     */
+    private $designerUrl;
 
     /**
      * {@inheritdoc}
@@ -75,5 +80,21 @@ class ProductVariantTranslation extends AbstractTranslation implements ProductVa
     public function setProductVariant(ProductVariant $productVariant): void
     {
         $this->productVariant = $productVariant;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDesignerUrl(): ?string
+    {
+        return $this->designerUrl;
+    }
+
+    /**
+     * @param string|null $designerUrl
+     */
+    public function setDesignerUrl(?string $designerUrl): void
+    {
+        $this->designerUrl = $designerUrl;
     }
 }

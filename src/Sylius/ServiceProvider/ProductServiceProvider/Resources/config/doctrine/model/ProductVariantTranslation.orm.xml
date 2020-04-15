@@ -9,7 +9,7 @@
  For the full copyright and license information, please view the LICENSE
  file that was distributed with this source code.
 
- This file incorporates work covered by the following copyright and  
+ This file incorporates work covered by the following copyright and
  permission notice:
 
    This file is part of the Sylius package.
@@ -37,6 +37,8 @@
         <field name="name" column="name" type="string" nullable="true" />
 
         <field name="locale" column="locale" type="string" />
+
+        <field name="designerUrl" column="designer_url" type="string" nullable="true" />
 
         <many-to-one field="productVariant" target-entity="PrintPlanet\Sylius\Component\Core\Model\ProductVariant">
             <join-column name="translatable_id" referenced-column-name="id" nullable="true" />
