@@ -36,7 +36,7 @@
             <join-column name="attribute_id" referenced-column-name="id" nullable="false"/>
         </many-to-one>
 
-        <field name="level" column="tree_left" type="integer" nullable="false">
+        <field name="level" column="level" type="integer" nullable="false">
             <options>
                 <option name="default">1</option>
             </options>
