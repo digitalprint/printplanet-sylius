@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ This file is part of the PrintPlanet/Sylius package.
+
+ (c) Nikos Papagiannopoulos
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+
+-->
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
+>
+
+    <mapped-superclass name="PrintPlanet\Sylius\Component\Core\Model\ProductVariantAttributeAxis" table="sylius_product_variant_attribute_axes">
+
+        <options>
+            <option name="charset">utf8</option>
+            <option name="collate">utf8_unicode_ci</option>
+        </options>
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <many-to-one field="productVariant" target-entity="PrintPlanet\Sylius\Component\Core\Model\ProductVariant">
+            <join-column name="product_variant_id" referenced-column-name="id" nullable="false"/>
+        </many-to-one>
+
+        <many-to-one field="attribute" target-entity="PrintPlanet\Sylius\Component\Product\Model\ProductAttribute">
+            <join-column name="attribute_id" referenced-column-name="id" nullable="false"/>
+        </many-to-one>
+
+        <field name="level" column="tree_left" type="integer" nullable="false">
+            <options>
+                <option name="default">1</option>
+            </options>
+        </field>
+
+    </mapped-superclass>
+</doctrine-mapping>
