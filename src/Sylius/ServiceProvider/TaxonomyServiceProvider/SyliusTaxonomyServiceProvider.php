@@ -15,7 +15,6 @@ namespace PrintPlanet\Sylius\ServiceProvider\TaxonomyServiceProvider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use Webmozart\Assert\Assert;
 
 final class SyliusTaxonomyServiceProvider implements ServiceProviderInterface
 {
@@ -24,20 +23,21 @@ final class SyliusTaxonomyServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        Assert::isCallable(
-            $app['addXmlMappingPath'],
-            'The key $app[\'addXmlMappingPath\'] must be provided and be a callable'
-        );
-
-        $app['addXmlMappingPath'](
-            [
-                'path' => sprintf(
-                    '%s/Resources/config/doctrine/model',
-                    \dirname((new \ReflectionObject($this))->getFileName())
-                ),
-                'namespace' => $this->getModelNamespace(),
-            ]
-        );
+        /**
+         * @deprecated The $app['addXmlMappingPath'] should not be used in the future to add Xml Mappings
+         *             the getXmlMappingPaths should be used instead.
+         */
+        if (is_callable($app['addXmlMappingPath'])) {
+            $app['addXmlMappingPath'](
+                [
+                    'path' => sprintf(
+                        '%s/Resources/config/doctrine/model',
+                        \dirname((new \ReflectionObject($this))->getFileName())
+                    ),
+                    'namespace' => $this->getModelNamespace(),
+                ]
+            );
+        }
     }
 
     /**
@@ -50,5 +50,18 @@ final class SyliusTaxonomyServiceProvider implements ServiceProviderInterface
     private function getModelNamespace(): string
     {
         return 'PrintPlanet\Sylius\Component\Taxonomy\Model';
+    }
+
+    public static function getXmlMappingPaths(): array
+    {
+        $self = new self;
+
+        return [
+            'path' => sprintf(
+                '%s/Resources/config/doctrine/model',
+                \dirname((new \ReflectionObject($self))->getFileName())
+            ),
+            'namespace' => $self->getModelNamespace(),
+        ];
     }
 }
