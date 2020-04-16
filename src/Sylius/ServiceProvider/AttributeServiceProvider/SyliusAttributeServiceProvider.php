@@ -25,7 +25,7 @@ final class SyliusAttributeServiceProvider implements ServiceProviderInterface
     {
         /**
          * @deprecated The $app['addXmlMappingPath'] should not be used in the future to add Xml Mappings
-         *             the getXmlMappingPaths should be used instead.
+         *             the getXmlMappingPath should be used instead.
          */
         if (is_callable($app['addXmlMappingPath'])) {
             $app['addXmlMappingPath'](
@@ -52,7 +52,7 @@ final class SyliusAttributeServiceProvider implements ServiceProviderInterface
         return 'PrintPlanet\Sylius\Component\Attribute\Model';
     }
 
-    public static function getXmlMappingPaths(): array
+    public static function getXmlMappingPath(): array
     {
         $self = new self;
 
