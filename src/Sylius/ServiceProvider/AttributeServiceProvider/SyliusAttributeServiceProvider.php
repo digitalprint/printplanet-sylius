@@ -27,7 +27,7 @@ final class SyliusAttributeServiceProvider implements ServiceProviderInterface
          * @deprecated The $app['addXmlMappingPath'] should not be used in the future to add Xml Mappings
          *             the getXmlMappingPath should be used instead.
          */
-        if (is_callable($app['addXmlMappingPath'])) {
+        if (isset($app['addXmlMappingPath']) && is_callable($app['addXmlMappingPath'])) {
             $app['addXmlMappingPath'](
                 [
                     'path' => sprintf(
