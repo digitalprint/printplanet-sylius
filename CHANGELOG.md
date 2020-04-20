@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0-beta] - 2020-04-20
+
+### Added
+
+- feature #6 PriceHelper & ProductVariantsPricesHelper to get easier product variant prices
+- `symfony/templating` dependency in composer.json.
+
+### Changed
+
+- Composer.json remove duplicate entry in require-dev of `doctrine/orm`.
+
+### Fixed
+
+- Typo in CHANGELOG.
+
 ## [1.0.0-beta.1] - 2020-04-20
 
 ### Fixed
@@ -17,9 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- All the necessary files to connect to the PrintPlanet Sylius tables and map it's entities
-- The changelog
+- All the necessary files to connect to the PrintPlanet Sylius tables and map its entities.
+- The changelog.
 
-[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.0.0-beta.1...master
+[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.1.0-beta...master
+[1.1.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.0.0-beta.1...v1.1.0-beta
 [1.0.0-beta.1]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.0.0-beta...v1.0.0-beta.1
 [1.0.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/tags/v1.0.0-beta
