@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
         - CurrencyContextInterface
         - CurrencyNotFoundException
     - Customer/Context
-        - CustomerContextInterface.php
+        - CustomerContextInterface
     - Customer/Model
         - Customer
         - CustomerAwareInterface
@@ -48,6 +48,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Typo in CHANGELOG.
 
 ## [1.0.0-beta.1] - 2020-04-20
+
+### Added
+
+- feature #7 Add findOneByUrl() in TaxonRepository
 
 ### Fixed
 
