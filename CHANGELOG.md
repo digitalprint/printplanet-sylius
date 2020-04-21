@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0-beta] - 2020-04-21
+
+### Added
+
+- feature #9 ShopperContext
+    - Channel/Context
+        - ChannelContextInterface
+        - ChannelNotFoundException
+    - Core/Context
+        - ShopperContext
+        - ShopperContextInterface
+    - Currency/Context
+        - CurrencyContextInterface
+        - CurrencyNotFoundException
+    - Customer/Context
+        - CustomerContextInterface.php
+    - Customer/Model
+        - Customer
+        - CustomerAwareInterface
+        - CustomerGroupInterface
+        - CustomerInterface
+    - Locale/Context
+        - LocaleContextInterface
+        - LocaleNotFoundException
+
 ## [1.1.0-beta] - 2020-04-20
 
 ### Added
@@ -35,7 +60,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All the necessary files to connect to the PrintPlanet Sylius tables and map its entities.
 - The changelog.
 
-[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.1.0-beta...master
+[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.2.0-beta...master
+[1.2.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.1.0-beta...v1.2.0-beta
 [1.1.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.0.0-beta.1...v1.1.0-beta
 [1.0.0-beta.1]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.0.0-beta...v1.0.0-beta.1
 [1.0.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/tags/v1.0.0-beta
