@@ -33,7 +33,6 @@
     "printplanet/sylius-taxonomy-service-provider": "@dev"
   },
   "require-dev": {
-    "doctrine/orm": "^2.5",
     "phpunit/phpunit": "^7.0"
   },
   "autoload": {
