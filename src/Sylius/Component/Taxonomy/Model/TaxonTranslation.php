@@ -53,10 +53,10 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     protected $active = true;
 
     /** @var bool */
-    protected $visibleInSiteMap;
+    protected $visibleInSiteMap = true;
 
     /** @var bool */
-    protected $visibleInMenu;
+    protected $visibleInMenu = true;
 
     public function __toString(): string
     {
