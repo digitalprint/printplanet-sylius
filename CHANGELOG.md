@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0-beta] - 2020-04-24
+
+### Added
+
+- Feature #11 add ProductAndAttributeBasedProductVariantResolver & Tests.
+- Feature #10 Add boolean `Active` field in `TaxonTranslation`.
+    - Active Field in `TaxonTranslation`.
+    - Getter & Setter in the `Taxon` for easier usage.
+    - constant `TAXON_FILTER_TYPE_ACTIVE` in the `TaxonRepositoryInterface`.
+    - filter by active in `TaxonRepository::findChildren()`.
+    - active field in ORM XML Mapping.
+
+### Changed
+
+- Support bitmask at `TaxonRepository::findChildren() $flag` parameter (156a721d). 
+- Remove unnecessary duplicate `"doctrine/orm": "^2.5",` in `"require-dev"` in `composer.json` files (abf3fe36).
+- Remove unnecessary bin-dir from component `composer.json` (ed0f5411).
+- Add default value to `$visibleInSiteMap` & `$visibleInMenu` in TaxonTranslation (d4eb2538).
+
+### Fixed
+
+- Require `ext-json` in composer.json (367a5a47)
+
 ## [1.2.1-beta] - 2020-04-21
 
 ### Changed
@@ -71,7 +94,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All the necessary files to connect to the PrintPlanet Sylius tables and map its entities.
 - The changelog.
 
-[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.2.1-beta...master
+[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.0-beta...master
+[1.3.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.2.1-beta...v1.3.0-beta
 [1.2.1-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.2.0-beta...v1.2.1-beta
 [1.2.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.1.0-beta...v1.2.0-beta
 [1.1.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.0.0-beta.1...v1.1.0-beta
