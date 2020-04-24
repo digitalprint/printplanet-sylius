@@ -12,6 +12,7 @@
   ],
   "require": {
     "php": "~7.1",
+    "ext-json": "*",
 
     "silex/silex": "~1.2",
     "doctrine/common": "^2.6",
