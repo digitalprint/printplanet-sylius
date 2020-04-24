@@ -40,11 +40,12 @@ interface TaxonRepositoryInterface extends RepositoryInterface
     /**
      * @param string      $parentCode
      * @param string|null $locale
-     * @param int|null    $flag
+     * @param int|null    $flag Bitmask of TAXON_FILTER_TYPE_ALL, TAXON_FILTER_TYPE_MENU,
+     *  TAXON_FILTER_TYPE_SITEMAP, TAXON_FILTER_TYPE_ACTIVE
      *
      * @return array|TaxonInterface[]
      */
-    public function findChildren(string $parentCode, ?string $locale = null, ?int $flag = 0): array;
+    public function findChildren(string $parentCode, ?string $locale = null, ?int $flag = self::TAXON_FILTER_TYPE_ALL): array;
 
     /**
      * @return array|TaxonInterface[]

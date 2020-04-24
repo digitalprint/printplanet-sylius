@@ -33,7 +33,7 @@ class TaxonRepository extends EntityRepository implements TaxonRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findChildren(string $parentCode, ?string $locale = null, ?int $flag = 0): array
+    public function findChildren(string $parentCode, ?string $locale = null, ?int $flag = self::TAXON_FILTER_TYPE_ALL): array
     {
         $queryBuilder = $this->createTranslationBasedQueryBuilder($locale)
             ->addSelect('child')
@@ -43,19 +43,19 @@ class TaxonRepository extends EntityRepository implements TaxonRepositoryInterfa
             ->setParameter('parentCode', $parentCode)
             ->addOrderBy('o.position');
 
-        if (self::TAXON_FILTER_TYPE_MENU === $flag) {
+        if (self::TAXON_FILTER_TYPE_MENU & $flag) {
             $queryBuilder
                 ->andWhere('translation.visibleInMenu = :visibleInMenu')
                 ->setParameter('visibleInMenu', true);
         }
 
-        if (self::TAXON_FILTER_TYPE_SITEMAP === $flag) {
+        if (self::TAXON_FILTER_TYPE_SITEMAP & $flag) {
             $queryBuilder
                 ->andWhere('translation.visibleInSitemap = :visibleInSitemap')
                 ->setParameter('visibleInSitemap', true);
         }
 
-        if (self::TAXON_FILTER_TYPE_ACTIVE === $flag) {
+        if (self::TAXON_FILTER_TYPE_ACTIVE & $flag) {
             $queryBuilder
                 ->andWhere('translation.visibleInSitemap = :active')
                 ->setParameter('active', true);
