@@ -9,7 +9,7 @@
  For the full copyright and license information, please view the LICENSE
  file that was distributed with this source code.
 
- This file incorporates work covered by the following copyright and  
+ This file incorporates work covered by the following copyright and
  permission notice:
 
    This file is part of the Sylius package.
@@ -47,6 +47,11 @@
         <field name="locale" column="locale" type="string" />
         <field name="layout" column="layout" type="text" nullable="true" />
         <field name="url" column="url" type="text" nullable="true" />
+        <field name="active" column="active" type="boolean">
+            <options>
+                <option name="default">1</option>
+            </options>
+        </field>
         <field name="visibleInSiteMap" column="visible_in_site_map" type="boolean">
             <options>
                 <option name="default">1</option>

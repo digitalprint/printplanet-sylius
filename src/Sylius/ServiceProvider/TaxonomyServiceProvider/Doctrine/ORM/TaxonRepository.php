@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -53,6 +53,12 @@ class TaxonRepository extends EntityRepository implements TaxonRepositoryInterfa
             $queryBuilder
                 ->andWhere('translation.visibleInSitemap = :visibleInSitemap')
                 ->setParameter('visibleInSitemap', true);
+        }
+
+        if (self::TAXON_FILTER_TYPE_ACTIVE === $flag) {
+            $queryBuilder
+                ->andWhere('translation.visibleInSitemap = :active')
+                ->setParameter('active', true);
         }
 
         return $queryBuilder
