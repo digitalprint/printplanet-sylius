@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *    This file is part of the Sylius package.
  *
  *    (c) Paweł Jędrzejewski
@@ -261,6 +261,23 @@ class Taxon implements TaxonInterface
     {
         $this->getTranslation()->setUrl($url);
     }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->getTranslation()->isActive();
+    }
+
+    /**
+     * @param bool $active
+     */
+    public function setActive(bool $active): void
+    {
+        $this->getTranslation()->setActive($active);
+    }
+
     /**
      * {@inheritdoc}
      */
