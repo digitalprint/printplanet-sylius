@@ -7,11 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2-beta] - 2020-04-27
+
+### Fixed
+
+- Fix !12 TaxonViewLayout, data parameter can't be null.
+
 ## [1.3.1-beta] - 2020-04-27
 
 ### Fixed
 
-- Fix !11 TaxonViewLayout::fromJson() error when parameter $layout null is
+- Fix !11 TaxonViewLayout::fromJson() error when parameter $layout null is.
 
 ## [1.3.0-beta] - 2020-04-24
 
@@ -100,7 +106,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All the necessary files to connect to the PrintPlanet Sylius tables and map its entities.
 - The changelog.
 
-[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.1-beta...master
+[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.2-beta...master
+[1.3.2-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.1-beta...v1.3.2-beta
 [1.3.1-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.0-beta...v1.3.1-beta
 [1.3.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.2.1-beta...v1.3.0-beta
 [1.2.1-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.2.0-beta...v1.2.1-beta
