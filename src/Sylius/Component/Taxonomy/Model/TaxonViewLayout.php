@@ -21,22 +21,26 @@ class TaxonViewLayout implements JsonSerializable
     protected $data;
 
     /**
-     * @param array|null $data
+     * @param array $data
      */
-    public function __construct(?array $data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
 
+    /**
+     * @param string|null $layout
+     * @return TaxonViewLayout
+     */
     public static function fromJson(?string $layout): TaxonViewLayout
     {
         if (null === $layout) {
-            return new TaxonViewLayout(null);
+            return new TaxonViewLayout([]);
         }
 
         $result = json_decode($layout, true);
 
-        return new TaxonViewLayout($result ?? null);
+        return new TaxonViewLayout($result ?? []);
     }
 
     /**
