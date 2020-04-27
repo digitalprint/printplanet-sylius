@@ -30,6 +30,10 @@ class TaxonViewLayout implements JsonSerializable
 
     public static function fromJson(?string $layout): TaxonViewLayout
     {
+        if (null === $layout) {
+            return new TaxonViewLayout(null);
+        }
+
         $result = json_decode($layout, true);
 
         return new TaxonViewLayout($result ?? null);
