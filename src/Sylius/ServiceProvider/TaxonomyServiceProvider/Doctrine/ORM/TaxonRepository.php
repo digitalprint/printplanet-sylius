@@ -51,8 +51,8 @@ class TaxonRepository extends EntityRepository implements TaxonRepositoryInterfa
 
         if (self::TAXON_FILTER_TYPE_SITEMAP & $flag) {
             $queryBuilder
-                ->andWhere('translation.visibleInSiteMap = :visibleInSitemap')
-                ->setParameter('visibleInSitemap', true);
+                ->andWhere('translation.visibleInSiteMap = :visibleInSiteMap')
+                ->setParameter('visibleInSiteMap', true);
         }
 
         if (self::TAXON_FILTER_TYPE_ACTIVE & $flag) {
