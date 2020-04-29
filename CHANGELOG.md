@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.3-beta] - 2020-04-29
+
+### Fixed
+
+- Fix Typo `visibleInSiteMap` & wrong `active` field in `TaxonRepository`.
+
 ## [1.3.2-beta] - 2020-04-27
 
 ### Fixed
@@ -106,7 +112,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All the necessary files to connect to the PrintPlanet Sylius tables and map its entities.
 - The changelog.
 
-[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.2-beta...master
+[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.3-beta...master
+[1.3.3-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.2-beta...v1.3.3-beta
 [1.3.2-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.1-beta...v1.3.2-beta
 [1.3.1-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.0-beta...v1.3.1-beta
 [1.3.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.2.1-beta...v1.3.0-beta
