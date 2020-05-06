@@ -93,7 +93,10 @@ class ProductAndAttributeBasedProductVariantResolver
                 return false;
             }
 
-            if ($attributeValue !== $attribute->getValue()) {
+            if (
+                (false === is_array($attribute->getValue()) && $attributeValue !== $attribute->getValue()) ||
+                (true === is_array($attribute->getValue()) && false === in_array($attributeValue, $attribute->getValue(), true))
+            ) {
                 return false;
             }
         }
@@ -115,7 +118,8 @@ class ProductAndAttributeBasedProductVariantResolver
             /** @var AttributeValueInterface $attribute */
             if (
                 (null !== $attribute = $productVariant->getAttributeByCodeAndLocale($attributeCode, $locale)) &&
-                $attributeValue === $attribute->getValue()
+                ((false === is_array($attribute->getValue()) && $attributeValue === $attribute->getValue()) ||
+                (true === is_array($attribute->getValue()) && true === in_array($attributeValue, $attribute->getValue(), true)))
             ) {
                 $result = true;
             }
