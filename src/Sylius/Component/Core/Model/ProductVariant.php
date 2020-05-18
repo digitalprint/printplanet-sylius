@@ -27,13 +27,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use PrintPlanet\Sylius\Component\Attribute\Model\AttributeSubjectInterface;
 use PrintPlanet\Sylius\Component\Attribute\Model\AttributeValueInterface;
-use PrintPlanet\Sylius\Component\Product\Model\ProductAttributeInterface;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariant as BaseVariant;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariantAttributeValueInterface;
+use PrintPlanet\Sylius\Component\Shipping\Model\ShippingCategoryInterface;
 use Webmozart\Assert\Assert;
 
 
-class ProductVariant extends BaseVariant implements ProductVariantInterface, AttributeSubjectInterface
+class ProductVariant extends BaseVariant implements ProductVariantInterface
 {
     /** @var int */
     protected $version = 1;
@@ -58,6 +58,9 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
 
     /** @var float */
     protected $depth;
+
+    /** @var ShippingCategoryInterface */
+    protected $shippingCategory;
 
     /** @var Collection */
     protected $channelPricings;
@@ -186,6 +189,22 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
     public function getInventoryName(): ?string
     {
         return null !== $this->getProduct() ? $this->getProduct()->getName() : null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShippingCategory(): ?ShippingCategoryInterface
+    {
+        return $this->shippingCategory;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setShippingCategory(?ShippingCategoryInterface $category): void
+    {
+        $this->shippingCategory = $category;
     }
 
     /**
@@ -592,7 +611,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
     }
 
     /**
-     * @return Collection|ProductVariantAttributeAxisInterface[]
+     * {@inheritDoc}
      */
     public function getVariantAxes(): Collection
     {
@@ -600,9 +619,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
     }
 
     /**
-     * @param ProductVariantAttributeAxisInterface $productAttribute
-     *
-     * @return bool
+     * {@inheritDoc}
      */
     public function hasVariantAxis(ProductVariantAttributeAxisInterface $productAttribute): bool
     {
@@ -610,7 +627,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
     }
 
     /**
-     * @param ProductVariantAttributeAxisInterface $productAttribute
+     * {@inheritDoc}
      */
     public function addVariantAxis(ProductVariantAttributeAxisInterface $productAttribute): void
     {
@@ -619,6 +636,9 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function removeVariantAxis(ProductVariantAttributeAxisInterface $productAttribute): void
     {
         if ($this->hasVariantAxis($productAttribute)) {
@@ -626,10 +646,26 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface, Att
         }
     }
 
+
     /**
-     * @param string $localeCode
-     *
-     * @return Collection|AttributeValueInterface[]
+     * {@inheritDoc}
+     */
+    public function getVariantAxisByCodeAndLevel(string $attributeCode, int $level): ?ProductVariantAttributeAxisInterface
+    {
+        foreach ($this->variantAxes as $axis) {
+            if (
+                $level === $axis->getLevel() &&
+                $attributeCode === $axis->getAttribute()->getCode()
+            ) {
+                return $axis;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
      */
     public function getVariantAxesValuesByLocale(string $localeCode): Collection
     {

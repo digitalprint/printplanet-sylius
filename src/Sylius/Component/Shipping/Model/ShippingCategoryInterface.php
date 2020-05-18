@@ -21,17 +21,19 @@
 
 declare(strict_types=1);
 
-namespace PrintPlanet\Sylius\Component\Product\Model;
+namespace PrintPlanet\Sylius\Component\Shipping\Model;
 
+use PrintPlanet\Sylius\Component\Resource\Model\CodeAwareInterface;
 use PrintPlanet\Sylius\Component\Resource\Model\ResourceInterface;
-use PrintPlanet\Sylius\Component\Resource\Model\TranslationInterface;
+use PrintPlanet\Sylius\Component\Resource\Model\TimestampableInterface;
 
-interface ProductVariantTranslationInterface extends ResourceInterface, TranslationInterface, ProductVariantTranslationExtendedInterface
+interface ShippingCategoryInterface extends CodeAwareInterface, TimestampableInterface, ResourceInterface
 {
-    /**
-     * @return string
-     */
     public function getName(): ?string;
 
     public function setName(?string $name): void;
+
+    public function getDescription(): ?string;
+
+    public function setDescription(?string $description): void;
 }

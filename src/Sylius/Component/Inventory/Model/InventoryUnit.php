@@ -21,17 +21,34 @@
 
 declare(strict_types=1);
 
-namespace PrintPlanet\Sylius\Component\Product\Model;
+namespace PrintPlanet\Sylius\Component\Inventory\Model;
 
-use PrintPlanet\Sylius\Component\Resource\Model\ResourceInterface;
-use PrintPlanet\Sylius\Component\Resource\Model\TranslationInterface;
-
-interface ProductVariantTranslationInterface extends ResourceInterface, TranslationInterface, ProductVariantTranslationExtendedInterface
+class InventoryUnit implements InventoryUnitInterface
 {
-    /**
-     * @return string
-     */
-    public function getName(): ?string;
+    /** @var mixed */
+    protected $id;
 
-    public function setName(?string $name): void;
+    /** @var StockableInterface */
+    protected $stockable;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStockable(): ?StockableInterface
+    {
+        return $this->stockable;
+    }
+
+    public function setStockable(StockableInterface $stockable): void
+    {
+        $this->stockable = $stockable;
+    }
 }

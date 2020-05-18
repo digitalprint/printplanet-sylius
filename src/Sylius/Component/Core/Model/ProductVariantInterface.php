@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -23,9 +23,20 @@ declare(strict_types=1);
 
 namespace PrintPlanet\Sylius\Component\Core\Model;
 
+use PrintPlanet\Sylius\Component\Attribute\Model\AttributeSubjectInterface;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariantInterface as BaseVariantInterface;
+use PrintPlanet\Sylius\Component\Shipping\Model\ShippableInterface;
+use PrintPlanet\Sylius\Component\Inventory\Model\StockableInterface;
+use PrintPlanet\Sylius\Component\Resource\Model\VersionedInterface;
 
-interface ProductVariantInterface extends BaseVariantInterface, ProductImagesAwareInterface
+interface ProductVariantInterface extends
+    AttributeSubjectInterface,
+    BaseVariantInterface,
+    ShippableInterface,
+    StockableInterface,
+    VersionedInterface,
+    ProductImagesAwareInterface,
+    ProductVariantExtendedInterface
 {
     public function getWeight(): ?float;
 

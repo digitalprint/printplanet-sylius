@@ -21,17 +21,13 @@
 
 declare(strict_types=1);
 
-namespace PrintPlanet\Sylius\Component\Product\Model;
+namespace PrintPlanet\Sylius\Component\Inventory\Checker;
 
-use PrintPlanet\Sylius\Component\Resource\Model\ResourceInterface;
-use PrintPlanet\Sylius\Component\Resource\Model\TranslationInterface;
+use PrintPlanet\Sylius\Component\Inventory\Model\StockableInterface;
 
-interface ProductVariantTranslationInterface extends ResourceInterface, TranslationInterface, ProductVariantTranslationExtendedInterface
+interface AvailabilityCheckerInterface
 {
-    /**
-     * @return string
-     */
-    public function getName(): ?string;
+    public function isStockAvailable(StockableInterface $stockable): bool;
 
-    public function setName(?string $name): void;
+    public function isStockSufficient(StockableInterface $stockable, int $quantity): bool;
 }

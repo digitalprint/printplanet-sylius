@@ -17,17 +17,10 @@ use PrintPlanet\Sylius\Component\Core\Model\ProductInterface;
 use PrintPlanet\Sylius\Component\Core\Model\ProductVariantInterface;
 use PrintPlanet\Sylius\Component\Attribute\Model\AttributeValueInterface;
 
-class ProductAndAttributeBasedProductVariantResolver
+class ProductAndAttributeBasedProductVariantResolver implements ProductAndAttributeBasedProductVariantResolverInterface
 {
     /**
-     * Tries to find a ProductVariant which has the given (or less) attributes,
-     * but with at least the required attribute, returns null when none found.
-     *
-     * @param ProductInterface $product
-     * @param string $requiredAttributeValueCode
-     * @param array $attributes In form of [[attribute code => attribute value],]
-     * @param string $locale
-     * @return ProductVariantInterface|null
+     *  {@inheritDoc}
      */
     public function findVariant(
         ProductInterface $product,
@@ -57,12 +50,7 @@ class ProductAndAttributeBasedProductVariantResolver
     }
 
     /**
-     * Returns a ProductVariant which has the given attributes or null if none found.
-     *
-     * @param ProductInterface $product
-     * @param array $attributes In form of [[attribute code => attribute value],]
-     * @param string $locale
-     * @return ProductVariantInterface|null
+     *  {@inheritDoc}
      */
     public function getVariantWithAttributes(
         ProductInterface $product,
@@ -80,10 +68,7 @@ class ProductAndAttributeBasedProductVariantResolver
     }
 
     /**
-     * @param ProductVariantInterface $productVariant
-     * @param array $attributes In form of [[attribute code => attribute value],]
-     * @param string $locale
-     * @return bool
+     *  {@inheritDoc}
      */
     public function variantHasAllAttributes(ProductVariantInterface $productVariant, array $attributes, string $locale): bool
     {
@@ -105,10 +90,7 @@ class ProductAndAttributeBasedProductVariantResolver
     }
 
     /**
-     * @param ProductVariantInterface $productVariant
-     * @param array $attributes In form of [[attribute code => attribute value],]
-     * @param string $locale
-     * @return bool
+     *  {@inheritDoc}
      */
     public function variantHasSomeAttributes(ProductVariantInterface $productVariant, array $attributes, string $locale): bool
     {

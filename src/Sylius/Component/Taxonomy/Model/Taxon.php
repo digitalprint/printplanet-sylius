@@ -263,7 +263,7 @@ class Taxon implements TaxonInterface
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function isActive(): bool
     {
@@ -271,7 +271,7 @@ class Taxon implements TaxonInterface
     }
 
     /**
-     * @param bool $active
+     * {@inheritdoc}
      */
     public function setActive(bool $active): void
     {

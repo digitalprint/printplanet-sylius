@@ -67,7 +67,7 @@ class ProductVariantTranslation extends AbstractTranslation implements ProductVa
     }
 
     /**
-     * @return ProductVariant
+     * {@inheritdoc}
      */
     public function getProductVariant(): ProductVariant
     {
@@ -75,7 +75,7 @@ class ProductVariantTranslation extends AbstractTranslation implements ProductVa
     }
 
     /**
-     * @param ProductVariant $productVariant
+     * {@inheritdoc}
      */
     public function setProductVariant(ProductVariant $productVariant): void
     {
@@ -83,7 +83,7 @@ class ProductVariantTranslation extends AbstractTranslation implements ProductVa
     }
 
     /**
-     * @return string|null
+     * {@inheritdoc}
      */
     public function getDesignerUrl(): ?string
     {
@@ -91,7 +91,7 @@ class ProductVariantTranslation extends AbstractTranslation implements ProductVa
     }
 
     /**
-     * @param string|null $designerUrl
+     * {@inheritdoc}
      */
     public function setDesignerUrl(?string $designerUrl): void
     {

@@ -1,0 +1,24 @@
+{
+    "name": "printplanet/sylius-inventory",
+    "type": "library",
+    "description": "Component for flexible inventory management for PHP applications.",
+    "keywords": ["shop", "ecommerce", "stock", "inventory", "sylius"],
+    "homepage": "https://www.printplanet.de",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PrintPlanet",
+            "homepage": "https://www.printplanet.de"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+
+        "printplanet/sylius-resource": "@dev"
+    },
+    "autoload": {
+        "psr-4": { "PrintPlanet\\Sylius\\Component\\Inventory\\": "" }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

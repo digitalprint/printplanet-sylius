@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -26,7 +26,7 @@ namespace PrintPlanet\Sylius\Component\Attribute\Model;
 use PrintPlanet\Sylius\Component\Resource\Model\ResourceInterface;
 use PrintPlanet\Sylius\Component\Resource\Model\TranslationInterface;
 
-interface AttributeTranslationInterface extends ResourceInterface, TranslationInterface
+interface AttributeTranslationInterface extends ResourceInterface, TranslationInterface, AttributeTranslationExtendedInterface
 {
     public function getName(): ?string;
 

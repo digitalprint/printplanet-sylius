@@ -9,20 +9,12 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace PrintPlanet\Sylius\Component\Core\Provider;
 
 use PrintPlanet\Sylius\Component\Core\Model\TaxonInterface;
 use PrintPlanet\Sylius\Component\Taxonomy\Model\TaxonViewLayout;
 
-class TaxonLayoutProvider implements TaxonLayoutProviderInterface
+interface TaxonLayoutProviderInterface
 {
-    /**
-     * {@inheritDoc}
-     */
-    public static function getViewLayout(TaxonInterface $taxon): ?TaxonViewLayout
-    {
-        return $taxon->getTranslation()->getViewLayout() ?? static::getViewLayout($taxon->getParent());
-    }
+    public static function getViewLayout(TaxonInterface $taxon): ?TaxonViewLayout;
 }
