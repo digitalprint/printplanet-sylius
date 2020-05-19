@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0-beta] - 2020-05-19
+
+### Added
+
+- Feature #12 Add extended Interfaces to existing interfaces to represent missing PrintPlanet features.
+  See merge request !14.
+- Feature #15 Remove active property from product variant but use an attribute instead.
+  See merge request !15.
+
 ## [1.3.4-beta] - 2020-05-06
 
 ### Fixed
@@ -118,7 +127,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All the necessary files to connect to the PrintPlanet Sylius tables and map its entities.
 - The changelog.
 
-[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.4-beta...master
+[unreleased]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.4.0-beta...master
+[1.4.0-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.4-beta...v1.4.0-beta
 [1.3.4-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.3-beta...v1.3.4-beta
 [1.3.3-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.2-beta...v1.3.3-beta
 [1.3.2-beta]: https://gitlab.com/printplanet-team/pp-team/printplanet-sylius/-/compare/v1.3.1-beta...v1.3.2-beta
