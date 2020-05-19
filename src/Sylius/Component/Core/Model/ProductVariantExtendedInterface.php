@@ -19,6 +19,12 @@ use PrintPlanet\Sylius\Component\Attribute\Model\AttributeValueInterface;
 interface ProductVariantExtendedInterface
 {
     /**
+     * @param string|null $localeCode
+     * @return bool
+     */
+    public function isActive(?string $localeCode = null): bool;
+
+    /**
      * @return Collection|ProductVariantAttributeAxisInterface[]
      */
     public function getVariantAxes(): Collection;
