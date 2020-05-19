@@ -21,20 +21,35 @@
 
 declare(strict_types=1);
 
-namespace PrintPlanet\Sylius\Component\Attribute\Model;
+namespace PrintPlanet\Sylius\Component\Shipping\Model;
 
-use PrintPlanet\Sylius\Component\Resource\Model\AbstractTranslation;
+use PrintPlanet\Sylius\Component\Resource\Model\TimestampableTrait;
 
-class AttributeTranslation extends AbstractTranslation implements AttributeTranslationInterface
+class ShippingCategory implements ShippingCategoryInterface
 {
+    use TimestampableTrait;
+
     /** @var mixed */
     protected $id;
 
     /** @var string */
+    protected $code;
+
+    /** @var string */
     protected $name;
 
-    /** @var AttributeInterface */
-    protected $attribute;
+    /** @var string */
+    protected $description;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    public function __toString(): string
+    {
+        return (string) $this->getName();
+    }
 
     /**
      * {@inheritdoc}
@@ -42,6 +57,22 @@ class AttributeTranslation extends AbstractTranslation implements AttributeTrans
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCode(?string $code): void
+    {
+        $this->code = $code;
     }
 
     /**
@@ -61,18 +92,18 @@ class AttributeTranslation extends AbstractTranslation implements AttributeTrans
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function getAttribute(): AttributeInterface
+    public function getDescription(): ?string
     {
-        return $this->attribute;
+        return $this->description;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function setAttribute(AttributeInterface $attribute): void
+    public function setDescription(?string $description): void
     {
-        $this->attribute = $attribute;
+        $this->description = $description;
     }
 }

@@ -21,17 +21,11 @@
 
 declare(strict_types=1);
 
-namespace PrintPlanet\Sylius\Component\Product\Model;
+namespace PrintPlanet\Sylius\Component\Resource\Model;
 
-use PrintPlanet\Sylius\Component\Resource\Model\ResourceInterface;
-use PrintPlanet\Sylius\Component\Resource\Model\TranslationInterface;
-
-interface ProductVariantTranslationInterface extends ResourceInterface, TranslationInterface, ProductVariantTranslationExtendedInterface
+interface VersionedInterface
 {
-    /**
-     * @return string
-     */
-    public function getName(): ?string;
+    public function getVersion(): ?int;
 
-    public function setName(?string $name): void;
+    public function setVersion(?int $version): void;
 }

@@ -21,17 +21,23 @@
 
 declare(strict_types=1);
 
-namespace PrintPlanet\Sylius\Component\Product\Model;
+namespace PrintPlanet\Sylius\Component\Inventory\Model;
 
-use PrintPlanet\Sylius\Component\Resource\Model\ResourceInterface;
-use PrintPlanet\Sylius\Component\Resource\Model\TranslationInterface;
-
-interface ProductVariantTranslationInterface extends ResourceInterface, TranslationInterface, ProductVariantTranslationExtendedInterface
+interface StockableInterface
 {
-    /**
-     * @return string
-     */
-    public function getName(): ?string;
+    public function getInventoryName(): ?string;
 
-    public function setName(?string $name): void;
+    public function isInStock(): bool;
+
+    public function getOnHold(): ?int;
+
+    public function setOnHold(?int $onHold): void;
+
+    public function getOnHand(): ?int;
+
+    public function setOnHand(?int $onHand): void;
+
+    public function isTracked(): bool;
+
+    public function setTracked(bool $tracked): void;
 }

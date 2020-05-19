@@ -120,7 +120,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @return TaxonViewLayout|null
+     * {@inheritdoc}
      */
     public function getViewLayout(): ?TaxonViewLayout
     {
@@ -128,7 +128,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @param TaxonViewLayout|null $layout
+     * {@inheritdoc}
      */
     public function setLayout(?TaxonViewLayout $layout): void
     {
@@ -136,7 +136,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @return string|null
+     * {@inheritdoc}
      */
     public function getUrl(): ?string
     {
@@ -144,7 +144,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @param string|null $url
+     * {@inheritdoc}
      */
     public function setUrl(?string $url): void
     {
@@ -152,7 +152,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function isActive(): bool
     {
@@ -160,7 +160,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @param bool $active
+     * {@inheritdoc}
      */
     public function setActive(bool $active): void
     {
@@ -168,7 +168,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function isVisibleInSiteMap(): bool
     {
@@ -176,7 +176,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @param bool $visibleInSiteMap
+     * {@inheritdoc}
      */
     public function setVisibleInSiteMap(bool $visibleInSiteMap): void
     {
@@ -184,7 +184,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function isVisibleInMenu(): bool
     {
@@ -192,7 +192,7 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
     }
 
     /**
-     * @param bool $visibleInMenu
+     * {@inheritdoc}
      */
     public function setVisibleInMenu(bool $visibleInMenu): void
     {

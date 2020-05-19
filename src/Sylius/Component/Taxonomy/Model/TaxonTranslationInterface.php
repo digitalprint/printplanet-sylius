@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -27,7 +27,7 @@ use PrintPlanet\Sylius\Component\Resource\Model\ResourceInterface;
 use PrintPlanet\Sylius\Component\Resource\Model\SlugAwareInterface;
 use PrintPlanet\Sylius\Component\Resource\Model\TranslationInterface;
 
-interface TaxonTranslationInterface extends SlugAwareInterface, ResourceInterface, TranslationInterface
+interface TaxonTranslationInterface extends SlugAwareInterface, ResourceInterface, TranslationInterface, TaxonTranslationExtendedInterface
 {
     public function getName(): ?string;
 
@@ -37,7 +37,13 @@ interface TaxonTranslationInterface extends SlugAwareInterface, ResourceInterfac
 
     public function setDescription(?string $description): void;
 
+    /**
+     * @deprecated this method is also defined in \PrintPlanet\Sylius\Component\Taxonomy\Model\TaxonTranslationExtendedInterface::getViewLayout
+     */
     public function getViewLayout(): ?TaxonViewLayout;
 
+    /**
+     * @deprecated this method is also defined in \PrintPlanet\Sylius\Component\Taxonomy\Model\TaxonTranslationExtendedInterface::setLayout
+     */
     public function setLayout(?TaxonViewLayout $layout): void;
 }
