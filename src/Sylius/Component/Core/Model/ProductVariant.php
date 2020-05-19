@@ -25,7 +25,6 @@ namespace PrintPlanet\Sylius\Component\Core\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use PrintPlanet\Sylius\Component\Attribute\Model\AttributeSubjectInterface;
 use PrintPlanet\Sylius\Component\Attribute\Model\AttributeValueInterface;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariant as BaseVariant;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariantAttributeValueInterface;
@@ -77,7 +76,10 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
     /** @var Collection|ProductVariantAttributeAxisInterface[] */
     protected $variantAxes;
 
-    /** @var bool */
+    /**
+     * @var bool
+     * @deprecated an attribute is being used for the active property
+     */
     protected $active;
 
     public function __construct()
@@ -443,15 +445,19 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
     }
 
     /**
-     * @return bool
+     * {@inheritDoc}
      */
-    public function isActive(): bool
+    public function isActive(?string $localeCode = null): bool
     {
-        return $this->active;
+        if (null === $attribute = $this->getAttributeByCodeAndLocale('active', $localeCode)) {
+            return false;
+        }
+        return $attribute->getValue();
     }
 
     /**
      * @param bool $active
+     * @deprecated an attribute is being used for the active property
      */
     public function setActive(bool $active): void
     {
