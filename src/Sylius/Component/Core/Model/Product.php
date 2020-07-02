@@ -318,6 +318,16 @@ class Product extends BaseProduct implements ProductInterface
         return TaxonLayoutProvider::getViewLayout($this->getMainTaxon());
     }
 
+    public function getMetaTitle(): ?string
+    {
+        return $this->getTranslation()->getMetaTitle();
+    }
+
+    public function setMetaTitle(?string $metaTitle): void
+    {
+        $this->getTranslation()->setMetaTitle($metaTitle);
+    }
+
     public function getMetaDescriptionText(): ?string
     {
         return $this->getTranslation()->getMetaDescriptionText();

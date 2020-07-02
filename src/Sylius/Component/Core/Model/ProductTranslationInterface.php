@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file incorporates work covered by the following copyright and  
+ * This file incorporates work covered by the following copyright and
  * permission notice:
- * 
+ *
  *   This file is part of the Sylius package.
  *
  *   (c) Paweł Jędrzejewski
@@ -25,11 +25,8 @@ namespace PrintPlanet\Sylius\Component\Core\Model;
 
 use PrintPlanet\Sylius\Component\Product\Model\ProductTranslationInterface as BaseProductTranslationInterface;
 
-interface ProductTranslationInterface extends BaseProductTranslationInterface
+interface ProductTranslationInterface extends BaseProductTranslationInterface, ProductTranslationExtendedInterface
 {
-    /**
-     * @return string
-     */
     public function getShortDescription(): ?string;
 
     public function setShortDescription(?string $shortDescription): void;

@@ -34,6 +34,9 @@ class ProductTranslation extends BaseProductTranslation implements ProductTransl
     protected $shortDescription;
 
     /** @var string */
+    protected $metaTitle;
+
+    /** @var string */
     protected $metaDescriptionText;
 
     /**
@@ -53,7 +56,23 @@ class ProductTranslation extends BaseProductTranslation implements ProductTransl
     }
 
     /**
-     * @return string|null
+     * {@inheritdoc}
+     */
+    public function getMetaTitle(): ?string
+    {
+        return $this->metaTitle;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetaTitle(?string $metaTitle): void
+    {
+        $this->metaTitle = $metaTitle;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getMetaDescriptionText(): ?string
     {
@@ -61,7 +80,7 @@ class ProductTranslation extends BaseProductTranslation implements ProductTransl
     }
 
     /**
-     * @param string|null $metaDescriptionText
+     * {@inheritdoc}
      */
     public function setMetaDescriptionText(?string $metaDescriptionText): void
     {
