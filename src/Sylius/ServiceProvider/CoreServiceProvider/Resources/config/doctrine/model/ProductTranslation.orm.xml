@@ -45,6 +45,7 @@
         <field name="slug" column="slug" type="string" />
         <field name="description" column="description" type="text" nullable="true" />
         <field name="metaKeywords" column="meta_keywords" type="string" nullable="true" />
+        <field name="metaTitle" column="meta_title" type="string" nullable="true" />
         <field name="metaDescription" column="meta_description" type="string" nullable="true" />
         <field name="metaDescriptionText" column="meta_description_text" type="string" nullable="true" />
         <field name="locale" column="locale" type="string"/>
