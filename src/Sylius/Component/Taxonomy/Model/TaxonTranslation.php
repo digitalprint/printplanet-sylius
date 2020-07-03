@@ -124,7 +124,13 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
      */
     public function getViewLayout(): ?TaxonViewLayout
     {
-        return TaxonViewLayout::fromJson($this->layout);
+        $taxonViewLayout =  TaxonViewLayout::fromJson($this->layout);
+
+        if ([] === $taxonViewLayout->getData()) {
+            return null;
+        }
+
+        return $taxonViewLayout;
     }
 
     /**

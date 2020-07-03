@@ -36,14 +36,4 @@ interface TaxonTranslationInterface extends SlugAwareInterface, ResourceInterfac
     public function getDescription(): ?string;
 
     public function setDescription(?string $description): void;
-
-    /**
-     * @deprecated this method is also defined in \PrintPlanet\Sylius\Component\Taxonomy\Model\TaxonTranslationExtendedInterface::getViewLayout
-     */
-    public function getViewLayout(): ?TaxonViewLayout;
-
-    /**
-     * @deprecated this method is also defined in \PrintPlanet\Sylius\Component\Taxonomy\Model\TaxonTranslationExtendedInterface::setLayout
-     */
-    public function setLayout(?TaxonViewLayout $layout): void;
 }
