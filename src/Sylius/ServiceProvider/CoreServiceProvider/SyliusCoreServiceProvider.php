@@ -27,15 +27,20 @@ final class SyliusCoreServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        $app['sylius.templating.helper.product.variant.images'] = $app->share(static function ($app) {
+        $app['sylius.templating.helper.product.variant.images'] = $app->share(static function () {
             return new ProductVariantImagesHelper();
         });
 
-        $app->extend('twig', function ($twig, $app) {
-            /** @var Environment $twig */
-            $twig->addFilter(new TwigFilter('sylius_sort_images', static function (ProductVariantInterface $productVariant, array $options) use ($app) {
-                return $app['sylius.templating.helper.product.variant.images']->getImages($productVariant, ...$options);
-            }, ['is_variadic' => true]));
+        $app->extend('twig', static function ($twig, $app) {
+            try {
+                /** @var Environment $twig */
+                $twig->addFilter(new TwigFilter('sylius_sort_images', static function (ProductVariantInterface $productVariant, array $options = []) use ($app) {
+                    return $app['sylius.templating.helper.product.variant.images']->getImages($productVariant, ...$options);
+                }, ['is_variadic' => true]));
+            } catch (\LogicException $e) {
+            }
+
+            return $twig;
         });
 
         /**
