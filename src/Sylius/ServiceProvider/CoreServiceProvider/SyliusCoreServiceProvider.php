@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace PrintPlanet\Sylius\ServiceProvider\CoreServiceProvider;
 
+use PrintPlanet\Sylius\Component\Core\Model\ProductVariantInterface;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
+use Twig\Environment;
+use PrintPlanet\Sylius\ServiceProvider\CoreServiceProvider\Templating\Helper\ProductVariantImagesHelper;
+use Twig\TwigFilter;
 
 final class SyliusCoreServiceProvider implements ServiceProviderInterface
 {
@@ -23,6 +27,17 @@ final class SyliusCoreServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
+        $app['sylius.templating.helper.product.variant.images'] = $app->share(static function ($app) {
+            return new ProductVariantImagesHelper();
+        });
+
+        $app->extend('twig', function ($twig, $app) {
+            /** @var Environment $twig */
+            $twig->addFilter(new TwigFilter('sylius_sort_images', static function (ProductVariantInterface $productVariant, array $options) use ($app) {
+                return $app['sylius.templating.helper.product.variant.images']->getImages($productVariant, ...$options);
+            }, ['is_variadic' => true]));
+        });
+
         /**
          * @deprecated The $app['addXmlMappingPath'] should not be used in the future to add Xml Mappings
          *             the getXmlMappingPath should be used instead.
