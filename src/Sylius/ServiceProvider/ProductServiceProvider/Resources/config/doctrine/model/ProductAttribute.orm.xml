@@ -9,7 +9,7 @@
  For the full copyright and license information, please view the LICENSE
  file that was distributed with this source code.
 
- This file incorporates work covered by the following copyright and  
+ This file incorporates work covered by the following copyright and
  permission notice:
 
    This file is part of the Sylius package.
@@ -23,7 +23,7 @@
 
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
-    <mapped-superclass name="PrintPlanet\Sylius\Component\Product\Model\ProductAttribute" table="sylius_product_attribute">
+    <mapped-superclass name="PrintPlanet\Sylius\Component\Product\Model\ProductAttribute" table="sylius_product_attribute" repository-class="PrintPlanet\Sylius\ServiceProvider\ProductServiceProvider\Doctrine\ORM\ProductAttributeRepository">
 
         <options>
             <option name="charset">utf8</option>
