@@ -28,7 +28,7 @@
                   xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
 >
 
-    <mapped-superclass name="PrintPlanet\Sylius\Component\Core\Model\ProductVariant" table="sylius_product_variant">
+    <mapped-superclass name="PrintPlanet\Sylius\Component\Core\Model\ProductVariant" table="sylius_product_variant" repository-class="PrintPlanet\Sylius\ServiceProvider\CoreServiceProvider\Doctrine\ORM\ProductVariantRepository">
 
         <options>
             <option name="charset">utf8</option>
