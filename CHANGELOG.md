@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0-beta] - 2023-04-13
+
+### Added
+
+- Feature !21 [ProductServiceProvider] Add ProductVariantAssociations.
+
+
 ## [1.9.0-beta] - 2020-10-30
 
 ### Added
