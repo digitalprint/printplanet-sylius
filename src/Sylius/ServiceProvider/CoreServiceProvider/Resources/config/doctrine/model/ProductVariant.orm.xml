@@ -76,6 +76,13 @@
             </cascade>
         </one-to-many>
 
+        <one-to-many field="associations" target-entity="PrintPlanet\Sylius\Component\Product\Model\ProductVariantAssociation" mapped-by="owner">
+            <cascade>
+                <cascade-all />
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
+
         <one-to-many field="translations" target-entity="PrintPlanet\Sylius\Component\Product\Model\ProductVariantTranslation" mapped-by="productVariant" orphan-removal="true" index-by="locale">
             <cascade>
                 <cascade-all/>

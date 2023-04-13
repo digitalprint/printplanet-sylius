@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection ALL */
+
 /*
  * This file is part of the PrintPlanet/Sylius package.
  *
@@ -27,6 +29,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use PrintPlanet\Sylius\Component\Attribute\Model\AttributeValueInterface;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariant as BaseVariant;
+use PrintPlanet\Sylius\Component\Product\Model\ProductVariantAssociationInterface;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariantAttributeValueInterface;
 use PrintPlanet\Sylius\Component\Shipping\Model\ShippingCategoryInterface;
 use Webmozart\Assert\Assert;
@@ -76,6 +79,9 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
     /** @var Collection|ProductVariantAttributeAxisInterface[] */
     protected $variantAxes;
 
+    /** @var Collection|ProductVariantAssociationInterface[] */
+    protected $associations;
+
     /**
      * @var bool
      * @deprecated an attribute is being used for the active property
@@ -90,6 +96,7 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
         $this->images = new ArrayCollection();
         $this->attributes = new ArrayCollection();
         $this->variantAxes = new ArrayCollection();
+        $this->associations = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -685,5 +692,47 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
         }
 
         return new ArrayCollection($attributesByLocale);
+    }
+
+
+    public function getAssociations(): Collection
+    {
+        return $this->associations;
+    }
+
+    public function hasAssociation(ProductVariantAssociationInterface $productVariantAssociation): bool
+    {
+        return $this->associations->contains($productVariantAssociation);
+    }
+
+    public function addAssociation(ProductVariantAssociationInterface $productVariantAssociation): void
+    {
+        if (!$this->hasAssociation($productVariantAssociation)) {
+            $this->associations->add($productVariantAssociation);
+        }
+    }
+
+    public function removeAssociation(ProductVariantAssociationInterface $productVariantAssociation): void
+    {
+        if ($this->hasAssociation($productVariantAssociation)) {
+            $this->associations->removeElement($productVariantAssociation);
+        }
+    }
+
+    public function getAssociationByType(string $typeCode): ?ProductVariantAssociationInterface
+    {
+        $association = $this->associations->filter(static function(ProductVariantAssociationInterface $association) use ($typeCode) {
+            if (null !== $association->getType()) {
+                return $association->getType()->getCode() === $typeCode;
+            }
+
+            return false;
+        });
+
+        if ($association->isEmpty()) {
+            return null;
+        }
+
+        return $association->first();
     }
 }
