@@ -23,7 +23,9 @@ declare(strict_types=1);
 
 namespace PrintPlanet\Sylius\Component\Core\Model;
 
+use Doctrine\Common\Collections\Collection;
 use PrintPlanet\Sylius\Component\Attribute\Model\AttributeSubjectInterface;
+use PrintPlanet\Sylius\Component\Product\Model\ProductVariantAssociationInterface;
 use PrintPlanet\Sylius\Component\Product\Model\ProductVariantInterface as BaseVariantInterface;
 use PrintPlanet\Sylius\Component\Shipping\Model\ShippableInterface;
 use PrintPlanet\Sylius\Component\Inventory\Model\StockableInterface;
@@ -57,4 +59,14 @@ interface ProductVariantInterface extends
     public function isShippingRequired(): bool;
 
     public function setShippingRequired(bool $shippingRequired): void;
+
+    public function getAssociations(): Collection;
+
+    public function hasAssociation(ProductVariantAssociationInterface $productVariantAssociation): bool;
+
+    public function addAssociation(ProductVariantAssociationInterface $productVariantAssociation): void;
+
+    public function removeAssociation(ProductVariantAssociationInterface $productVariantAssociation): void;
+
+    public function getAssociationByType(string $typeCode): ?ProductVariantAssociationInterface;
 }

@@ -24,7 +24,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
     xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
 
-    <mapped-superclass name="PrintPlanet\Sylius\Component\Product\Model\ProductVariantAssociation" table="sylius_product_association">
+    <mapped-superclass name="PrintPlanet\Sylius\Component\Product\Model\ProductVariantAssociation" table="sylius_product_variant_association">
 
         <options>
             <option name="charset">utf8</option>
@@ -58,9 +58,9 @@
             </join-columns>
         </many-to-one>
 
-        <many-to-many field="associatedProducts" target-entity="PrintPlanet\Sylius\Component\Core\Model\Product">
+        <many-to-many field="associatedProductVariants" target-entity="PrintPlanet\Sylius\Component\Core\Model\ProductVariant">
             <order-by>
-                <order-by-field name="id" />
+                <order-by-field name="id" direction="DESC" />
             </order-by>
 
             <join-table name="sylius_product_variant_association_product_variant">
