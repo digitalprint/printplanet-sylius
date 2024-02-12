@@ -429,6 +429,15 @@ class Product implements ProductInterface
     /**
      * {@inheritdoc}
      */
+    public function isPublished(): bool
+    {
+        $firstVariant = $this->variants->first();
+        return $firstVariant->isPublished();
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
     public function isConfigurable(): bool
     {
         return ! $this->isSimple();
