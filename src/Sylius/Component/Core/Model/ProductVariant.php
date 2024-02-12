@@ -463,6 +463,17 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function isPublished(?string $localeCode = null): bool
+    {
+        if (null === $attribute = $this->getAttributeByCodeAndLocale('published', $localeCode)) {
+            return false;
+        }
+        return $attribute->getValue();
+    }
+
+    /**
      * @param bool $active
      * @deprecated an attribute is being used for the active property
      */
