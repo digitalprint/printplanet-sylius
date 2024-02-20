@@ -472,6 +472,17 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
         }
         return $attribute->getValue();
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function getMetaKeywords(?string $localeCode = null): string
+    {
+        if (null === $keywords = $this->getAttributeByCodeAndLocale('meta_keywords', $localeCode)) {
+            return '';
+        }
+        return $keywords->getValue();
+    }
 
     /**
      * @param bool $active
