@@ -485,6 +485,17 @@ class ProductVariant extends BaseVariant implements ProductVariantInterface
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function getMetaPriority(?string $localeCode = null): int
+    {
+        if (null === $attribute = $this->getAttributeByCodeAndLocale('meta_priority', $localeCode)) {
+            return 0;
+        }
+        return $attribute->getValue();
+    }    
+    
+    /**
      * @param bool $active
      * @deprecated an attribute is being used for the active property
      */
