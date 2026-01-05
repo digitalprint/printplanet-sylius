@@ -25,6 +25,7 @@ namespace PrintPlanet\Sylius\Component\Product\Model;
 
 use PrintPlanet\Sylius\Component\Resource\Model\AbstractTranslation;
 use PrintPlanet\Sylius\Component\Core\Model\ProductVariant;
+use PrintPlanet\Sylius\Component\Resource\Model\TranslatableInterface;
 
 class ProductVariantTranslation extends AbstractTranslation implements ProductVariantTranslationInterface
 {
@@ -36,6 +37,18 @@ class ProductVariantTranslation extends AbstractTranslation implements ProductVa
 
     /** @var ProductVariant */
     protected $productVariant;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTranslatable(?TranslatableInterface $translatable): void
+    {
+        parent::setTranslatable($translatable);
+
+        if (null === $translatable || $translatable instanceof ProductVariantInterface) {
+            $this->productVariant = $translatable;
+        }
+    }
 
     /**
      * @var string|null $designerUrl
