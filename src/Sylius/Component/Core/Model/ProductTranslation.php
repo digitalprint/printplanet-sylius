@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace PrintPlanet\Sylius\Component\Core\Model;
 
 use PrintPlanet\Sylius\Component\Product\Model\ProductTranslation as BaseProductTranslation;
+use PrintPlanet\Sylius\Component\Resource\Model\TranslatableInterface;
 
 class ProductTranslation extends BaseProductTranslation implements ProductTranslationInterface
 {
@@ -38,6 +39,18 @@ class ProductTranslation extends BaseProductTranslation implements ProductTransl
 
     /** @var string */
     protected $metaDescriptionText;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTranslatable(?TranslatableInterface $translatable): void
+    {
+        parent::setTranslatable($translatable);
+
+        if (null === $translatable || $translatable instanceof ProductInterface) {
+            $this->product = $translatable;
+        }
+    }
 
     /**
      * {@inheritdoc}
