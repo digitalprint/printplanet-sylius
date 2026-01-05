@@ -25,6 +25,7 @@ namespace PrintPlanet\Sylius\Component\Taxonomy\Model;
 
 use PrintPlanet\Sylius\Component\Resource\Model\AbstractTranslation;
 use PrintPlanet\Sylius\Component\Core\Model\TaxonInterface;
+use PrintPlanet\Sylius\Component\Resource\Model\TranslatableInterface;
 
 class TaxonTranslation extends AbstractTranslation implements TaxonTranslationInterface
 {
@@ -42,6 +43,18 @@ class TaxonTranslation extends AbstractTranslation implements TaxonTranslationIn
 
     /** @var TaxonInterface */
     protected $taxon;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTranslatable(?TranslatableInterface $translatable): void
+    {
+        parent::setTranslatable($translatable);
+
+        if (null === $translatable || $translatable instanceof TaxonInterface) {
+            $this->taxon = $translatable;
+        }
+    }
 
     /** @var string|null */
     protected $layout;
