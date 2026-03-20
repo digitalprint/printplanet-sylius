@@ -134,6 +134,29 @@ class TaxonRepository extends EntityRepository implements TaxonRepositoryInterfa
             ->getResult();
     }
 
+    
+    /**
+     * Checks whether a taxon has children that have `visibleInMenu = true` in the specified locale.
+     */
+    public function hasChildrenInMenu(int $taxonId, string $locale): bool
+    {
+        $count = $this->createQueryBuilder('o')
+            ->select('COUNT(child.id)')
+            ->innerJoin('o.children', 'child')
+            ->innerJoin('child.translations', 'childTranslation')
+            ->andWhere('o.id = :taxonId')
+            ->andWhere('childTranslation.locale = :locale')
+            ->andWhere('childTranslation.visibleInMenu = :visibleInMenu')
+            ->setParameter('taxonId', $taxonId)
+            ->setParameter('locale', $locale)
+            ->setParameter('visibleInMenu', true)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return $count > 0;
+    }
+
+
     /**
      * {@inheritdoc}
      */
